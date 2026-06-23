@@ -1,0 +1,77 @@
+# ============================================================
+# SimpleRanksDiscordSync v2.0
+# Automatische Discord koppeling + kleur sync + maandelijkse keys
+# ============================================================
+
+# Discord Bot Token (VERPLICHT)
+discord-token: "MTUxOTA5NzY5Mjg4NDcwMTMzNA.Gsw9qJ.piBiTIXPSEhpw4ubq8fCaTm26kr5yS1lQ9FNh4"
+
+# Discord Guild (Server) ID
+discord-guild-id: "1517256727173664768"
+
+# ============================================================
+# AUTOMATISCHE KOPPELING
+# ============================================================
+auto-link:
+  enabled: true
+  expiry: 15
+  instructions: "&aStuur de bot een DM met: &e!link %uuid%"
+
+# ============================================================
+# KLEUR SYNCHRONISATIE
+# ============================================================
+color-sync:
+  enabled: true
+  sync-bracket-color: true
+
+# ============================================================
+# MAANDELIJKSE KEY CLAIM (AbestCrates)
+# ============================================================
+# Alleen donator ranks krijgen keys:
+#   Thunder  â†’ abestcrates givekey <speler> Thunder 1
+#   Diamond  â†’ abestcrates givekey <speler> crate1 1
+#   Amathyst â†’ abestcrates givekey <speler> crate3 1
+#
+# Staff ranks krijgen GEEN maandelijkse keys.
+#
+monthly-key:
+  enabled: true
+
+  # Berichten
+  claim-message: "&aJe hebt je maandelijkse &e%key% &ageclaimed!"
+  already-claimed: "&cJe hebt deze maand al je key geclaimed. Volgende reset: &e%date%"
+  no-rank: "&cJe hebt geen rank om een key voor te claimen."
+
+# ============================================================
+# SYNCHRONISATIE INSTELLINGEN
+# ============================================================
+sync:
+  auto-sync-interval: 5
+  sync-on-join: true
+  remove-rank-on-role-remove: true
+  default-rank: "Member"
+
+# Rank mapping: Discord Rol Naam -> SimpleRanks Rank
+# Alleen donator ranks + Member. Staff ranks worden NIET gemapped voor keys.
+rank-mapping:
+  Thunder: "Thunder"
+  Diamond: "Diamond"
+  Amethyst: "Amathyst"
+  Member: "Member"
+
+# ============================================================
+# BERICHTEN
+# ============================================================
+messages:
+  prefix: "&8[&bSimpleSync&8] &r"
+  link-start: "&aOpen Discord en stuur de bot een DM met: &e!link %uuid%"
+  link-success: "&aJe Discord account is gekoppeld! Rank wordt gesynchroniseerd..."
+  link-fail: "&cKoppeling mislukt. Probeer opnieuw met /discordlink"
+  link-already: "&cJe bent al gekoppeld. Gebruik /discordunlink om te ontkoppelen."
+  unlink-success: "&aJe Discord account is ontkoppeld."
+  unlink-not-linked: "&cJe hebt geen gekoppeld Discord account."
+  rank-synced: "&aJe rank is gesynchroniseerd naar &e%rank%&a!"
+  no-discord-role: "&cJe hebt geen toegewezen rol in Discord. Default rank toegekend."
+  admin-sync-start: "&aBezig met synchroniseren..."
+  admin-sync-complete: "&aSynchronisatie voltooid! &e%count% &aspelers bijgewerkt."
+  admin-link-success: "&aSpeler &e%player% &ais gekoppeld aan Discord user &e%discord%"
