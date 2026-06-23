@@ -1,0 +1,123 @@
+# ============================================================
+# SimpleRanksDiscordSync v2.0
+# Automatische Discord koppeling + kleur sync + maandelijkse keys
+# ============================================================
+
+# Discord Bot Token (VERPLICHT)
+# https://discord.com/developers/applications -> Bot -> Reset Token
+discord-token: "HIER_JE_BOT_TOKEN"
+
+# Discord Guild (Server) ID
+# Rechtsklik servernaam -> Copy Server ID
+discord-guild-id: "HIER_JE_GUILD_ID"
+
+# ============================================================
+# AUTOMATISCHE KOPPELING
+# ============================================================
+auto-link:
+  enabled: true
+  expiry: 15
+  instructions: "&aStuur de bot een DM met: &e!link %uuid%"
+
+# ============================================================
+# KLEUR SYNCHRONISATIE
+# ============================================================
+# Kopieert de Discord rol kleur naar de Minecraft prefix
+# Gebaseerd op jouw server kleuren:
+#   Owner/Manager/Ticket Staff = oranje (&6)
+#   Co Owner/Sr Mod/Mod/Diamond = blauw (&9)
+#   Head Dev/Dev/Member = roze (&d)
+#   Sr Admin/Admin/Staff/Amathyst = paars (&5)
+#   Sr Helper/Helper = lichtblauw (&b)
+#   Thunder = geel (&e)
+# ============================================================
+color-sync:
+  enabled: true
+  sync-bracket-color: true
+
+# ============================================================
+# MAANDELIJKSE KEY CLAIM (AbestCrates)
+# ============================================================
+# Alleen donator ranks krijgen keys:
+#   Thunder rang  -> abestcrates givekey <speler> Thunder 1
+#   Diamond Rang  -> abestcrates givekey <speler> crate1 1
+#   Amathyst Rang -> abestcrates givekey <speler> crate3 1
+#
+# Staff ranks krijgen GEEN keys.
+# ============================================================
+monthly-key:
+  enabled: true
+
+  # Berichten
+  claim-message: "&aJe hebt je maandelijkse &e%key% &ageclaimed!"
+  already-claimed: "&cJe hebt deze maand al je key geclaimed. Volgende reset: &e%date%"
+  no-rank: "&cJe rank heeft geen maandelijkse key reward."
+
+# ============================================================
+# SYNCHRONISATIE INSTELLINGEN
+# ============================================================
+sync:
+  auto-sync-interval: 5
+  sync-on-join: true
+  remove-rank-on-role-remove: true
+  default-rank: "Member"
+
+# ============================================================
+# RANK MAPPING
+# ============================================================
+# Discord Rol Naam -> SimpleRanks Rank
+# BELANGRIJK: Exact overeenkomen! Hoofdlettergevoelig!
+#
+# Jouw Discord rollen (uit screenshots):
+# STAFF:
+#   Owner, Co Owner, Manager, Head Dev, Dev, Sr Admin, Admin,
+#   Sr Mod, Mod, Sr Helper, Helper, Ticket Staff, Staff, idititv
+#
+# DONATOR:
+#   Amathyst Rang, Diamond Rang, Thunder rang
+#
+# OVERIG:
+#   Member, media, Server Booster, bots, staff apps ping,
+#   giveaway ping, announcement ping, maintenance ping, Status ping
+# ============================================================
+rank-mapping:
+  # === STAFF RANKS ===
+  Owner: "Owner"
+  "Co Owner": "Co Owner"
+  Manager: "Manager"
+  "Head Dev": "Head Dev"
+  Dev: "Dev"
+  "Sr Admin": "SnrAdmin"
+  Admin: "Admin"
+  "Sr Mod": "SnrMod"
+  Mod: "Mod"
+  "Sr Helper": "SnrHelper"
+  Helper: "Helper"
+  "Ticket Staff": "Ticket Staff"
+  Staff: "Staff"
+  idititv: "idititv"
+
+  # === DONATOR RANKS ===
+  "Amathyst Rang": "Amathyst"
+  "Diamond Rang": "Diamond"
+  "Thunder rang": "Thunder"
+
+  # === DEFAULT ===
+  Member: "Member"
+
+# ============================================================
+# BERICHTEN
+# ============================================================
+messages:
+  prefix: "&8[&bSimpleSync&8] &r"
+  link-start: "&aOpen Discord en stuur de bot een DM met: &e!link %uuid%"
+  link-success: "&aJe Discord account is gekoppeld! Rank wordt gesynchroniseerd..."
+  link-fail: "&cKoppeling mislukt. Probeer opnieuw met /discordlink"
+  link-already: "&cJe bent al gekoppeld. Gebruik /discordunlink om te ontkoppelen."
+  unlink-success: "&aJe Discord account is ontkoppeld."
+  unlink-not-linked: "&cJe hebt geen gekoppeld Discord account."
+  rank-synced: "&aJe rank is gesynchroniseerd naar &e%rank%&a!"
+  no-discord-role: "&cJe hebt geen toegewezen rol in Discord. Default rank toegekend."
+  admin-sync-start: "&aBezig met synchroniseren..."
+  admin-sync-complete: "&aSynchronisatie voltooid! &e%count% &aspelers bijgewerkt."
+  admin-link-success: "&aSpeler &e%player% &ais gekoppeld aan Discord user &e%discord%"
